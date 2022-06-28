@@ -1,0 +1,70 @@
+
+/* 後台用CSS */
+
+#header{
+    /* width:100% ; 已由basic賦予100%寬度 這裡不用寫 */
+    height:100px ; /* header多高 slider就多高, 後台不需要這麼大的slider所以將高度改為100px, 就算slider高度100%也只有100px */
+}
+#container{
+    /* 後台的最小的container高度 */
+    min-height: calc( 100vh - 100px - 3rem ); /* 最小高度為100vh減basic.css內#container提供的hight300px與footer的height:3rem */
+}
+ul{
+    margin: 1rem 0 1rem 6rem;
+}
+.list-items{
+    display: flex;
+    justify-content: space-evenly;
+    padding:0.5rem;
+    margin:0.25rem 0;
+    border-bottom: 1px solid #eee;
+    font-weight: bold;
+    font-size: 1.15rem;
+}
+.list-items:hover{
+    background-color: rgb(164, 207, 193);
+    cursor: pointer;
+}
+
+.edit{
+    padding: 3px 12px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    border-radius: 1rem;
+    background: lightsalmon;
+    box-shadow: 3px 3px 10px #aaa;
+    margin: 0 5px;
+}
+.del{
+    padding: 3px 12px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    border-radius: 1rem;
+    background: rgb(172, 29, 29);
+    box-shadow: 3px 3px 10px #aaa;
+    margin: 0 5px;
+}
+.edit:hover{
+    background: rgb(149, 56, 19);
+    color: white;
+}
+.del:hover{
+    background: rgb(189, 71, 71);
+    color: red;
+}
+.list-header{
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    
+}
+.list-header div{
+    width: calc(100% / 6);
+    padding: 0.5rem 1rem;
+    background: blue;
+    color: #ccc;
+}
+.list-items div{
+    width: calc(100% / 6);
+    padding: 0.5rem 1rem;
+}
