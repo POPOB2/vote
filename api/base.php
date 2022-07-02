@@ -5,8 +5,8 @@ session_start(); // 會用到session 先宣告session_start()
 date_default_timezone_set('Asia/Taipei'); // 該程式使用的時區為何
 
 function pdo(){
-    // $dsn="mysql:host=localhost;charset=utf8;dbname=s1110103";
-    // return new PDO($dsn,'s1110103','s1110103');
+    // $dsn="mysql:host=localhost;charset=utf8;dbname=s1110203";
+    // return new PDO($dsn,'s1110203','s1110203');
     $dsn="mysql:host=localhost;charset=utf8;dbname=vote";
     return new PDO($dsn,'root','');
 }
