@@ -37,7 +37,7 @@
             </div>
         </form>
             <div class=Other_options>
-                <a style="width: 6%" href="">註冊</a>
+                <a style="width: 6%" href="./register.php">註冊</a>
                 <a style="width: 6%" href="./index.php">訪客</a>
                 <a href="">&nbsp;忘記密碼?</a>
             </div>
