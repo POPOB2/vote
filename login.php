@@ -20,10 +20,10 @@
         <form action="checklogin.php" method="post">
             <table>
                 <tr>
-                    <td><input type="text" name="acc"></td>
+                    <td><input type="text" name="acc" placeholder="輸入帳號"></td>
                 </tr>
                 <tr>
-                    <td><input type="text" name="pwd"></td>
+                    <td><input type="text" name="pwd" placeholder="輸入密碼"></td>
                 </tr>
             </table>
 
