@@ -1,5 +1,5 @@
 <?php
-include_once "../api/base.php";
+include_once "base.php";
 
 $acc=$_POST['acc'];
 $pw=md5($_POST['pw']);
@@ -11,12 +11,14 @@ $sql="SELECT count(*) FROM `users` WHERE `acc`='$acc' && `pw`='$pw'";
 
 $chk=$pdo->query($sql)->fetchColumn();
 
-if($chk){
-    $_SESSION['user']=$acc;
-    header("location:../index.php");
-}else{
-    $error="Incorrect account or password Re-enter";
-    header("location:../login.php?error=$error");
-    
-}
+    if($chk){
+        $_SESSION['user']=$acc;
+        header("location:../index.php");
+    }else{
+        $error="Incorrect account or password Re-enter";
+        header("location:../login.php?error=$error");
+        
+    }
+
+
 ?>
