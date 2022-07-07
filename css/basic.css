@@ -8,9 +8,10 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
+
 #header{
     width: 100%;
-    height: 300px;
+    height: 150px;
     position: relative; 
     /* 關於position: 相對設定 
        - 相對定位relative : 將指定標籤賦予座標 從00開此算, 並可設定Left和top, Left正值往右 top正值往下 以上兩者負值反之
@@ -21,8 +22,10 @@
     */
 }
 #header .slider{
+    background-image:url(upload/B.jpg);
     height: 100%; /*header多高 slider就多高*/
-    background: blue; 
+    background: rgb(250, 250, 250); 
+    box-shadow: 1px 1px 3px rgb(120, 120, 120,0.2);
     /*  這裡的basic.css的slider設定會影響前後端的的輪播圖範圍,但後台不需要這麼大的廣告版面,
         所以使用CSS後者覆蓋前者的特性, 讓後台輪播圖的頁面不那麼大, 去個別設定back.css的css設定覆蓋掉basic.css給予的大版面
         並不再front.css進行css更改, 以保留basic.css賦予index.php前台的輪播圖版面設定 */
@@ -44,16 +47,59 @@
     /* 定位於父標籤下方 */
     bottom: 0;
 }
+.main{
+    /* border: 1px solid red; */
+    width: 85%;
+    height: 739px;
+    margin: auto;
+    display: flex;
+    background-color: rgba(95,95,95,0.1);
+}
+nav{
+    display: flex;
+    flex-wrap: wrap;
+}
+nav>a{
+    border: 1px solid lightseagreen;
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    text-decoration: none;
+    margin-bottom: 2px;
+}
+.main>aside{
+    margin-top:16px ;
+    margin-right:5px ;
+
+    /* border: 1px solid olivedrab; */
+    height: 100%;
+    width: 10%;
+    display: inline-block;
+}
 #container{
+    display: flex;
+    justify-content: center;
+    height: 739px;
     width: 85%;
     min-width: 1000px;
     margin: auto;
 }
+.sort{
+    /* border: 1px solid red; */
+    /* background-color: red; */
+    margin-top: 25px;
+    width: 5%;
+}
 footer{
     width: 100%;
-    height: 3rem;
-    background: black;
-    color: white;
+    height: 5rem;
+    background: rgb(92, 92, 92, 1.0);
+    text-align: center;
+    padding-top: 10px;
+}
+.connection{
+    color: rgba(255,255,255,1.0);
 }
 /* --common components--- */
 .btn{
@@ -83,6 +129,3 @@ footer{
 .text-right{
     text-align: right;
 }
-
-/* ----------------------------------------------------------------------------- */
-
