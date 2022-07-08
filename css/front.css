@@ -1,34 +1,54 @@
 /* 前台頁面的CSS設定 */
-
+.main{
+    background-image:url(../upload/IN.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
 #container{
     /* 前台的最小的container高度 */
-    min-height: calc( 100vh - 300px - 3rem ); /* 最小高度為100vh減basic.css內#container提供的hight100px與footer的height:3rem */
+    /* 最小高度為100vh減basic.css內#container提供的hight100px與footer的height:3rem */
+    min-height: calc( 100vh - 300px - 3rem );
+    
 }
 ul{
     margin: 1rem 0 1rem 6rem;
 }
 #header .slider{
+    background-image:url(../upload/B.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
 
 
+
 .list-header{
     display: flex;
+    width: 1290px;
     justify-content: space-evenly;
     text-align: center;
-    
+    height: 50px;
+    line-height: 35px;
 }
+/* 投票主題的項目 */
 .list a{
     text-decoration: none;
+    color: rgb(32, 44, 42);
+}
+/* 其他選項的項目 */
+.text-center{
+    color: rgb(32, 44, 42);
 }
 .list-header div{
     width: calc(100% / 5);
     padding: 0.5rem 1rem;
-    background: blue;
+    background: rgb(89, 89, 98);
     color: #ccc;
+    margin-left: 1px;
+    font-size: 20px;
+    border-radius: 5px;
 }
 .list-header div a{
     color: #ccc;
