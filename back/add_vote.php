@@ -25,7 +25,7 @@
     </div>
     <div id="options">
         <div>
-            <label>選項:</label><input type="text" name="option[]"> <!-- 先在這獲取內容,再將17行的文字加進來 類似options=options+opt -->
+            <label>選項:</label><input class="newEnter" type="text" name="option[]"> <!-- 先在這獲取內容,再將17行的文字加進來 類似options=options+opt -->
             <!-- 這裡的name要加上[]框號 避免新增多個欄位時, 沒有產生陣列的索引分類這些name="option"
                  這會導致所有欄位都標記為name="option" 而導致不管新增幾個都會一直有新的option覆蓋舊的option 結果終究只有最後一個option(欄位)
 
@@ -40,9 +40,9 @@
                   將只有一個options作為空陣列的基準 所以後續新增的欄位都以索引 填入該options陣列
              -->
 
+             <input class="new" type="submit" value="新增該投票項目">
+            </div>
         </div>
-    </div>
-    <input type="submit" value="新增">
 
 </form>
 <script>
