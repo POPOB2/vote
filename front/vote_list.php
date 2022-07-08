@@ -18,12 +18,12 @@ if(isset($_GET['filter'])){
 
 ?>
 
-    <div><!-- 新增分類管理選擇器=============================================================================================== -->
-        <label for="types">分類</label>
+    <div class="sort"><!-- 新增分類管理選擇器=============================================================================================== -->
+        <!-- <label for="types">分類</label> -->
         <!-- onchange=改變選擇項目時觸發的事件 --><!-- this代表當前該<select> 的 value(select內的 下列option value=0) -->
         <select name="types" id="types" onchange="location.href=`?filter=${this.value}<?=$p;?><?=$queryStr;?>`">
                                                                                 <!-- 將< ?=$p;?> 和 < ?=$queryStr;?> 拆開寫 這樣沒有值就不會加上來 -->
-                <option value="0">全部</option>
+                <option value="0">投票分類</option>
             <?php
             $types=all("types");
             foreach($types as $type){
@@ -36,7 +36,7 @@ if(isset($_GET['filter'])){
         </select>
     </div>
 
-<div>   
+<!-- <div>    -->
                         <!--  使用網址帶值的方式控制 投票主題各個參數的排序 
                            1. 網址狀態為不帶值時 執行$subjects=all('subjects',$orderStr) 僅以subjects表做為條件 顯示資料表順序
                            2. 網址狀態為帶值時 執行 偵測是否需要進行排序 為 是, 將$orderStr用GET賦值
@@ -137,7 +137,7 @@ if(isset($_GET['filter'])){
                         $total=math('subjects','count','id',$filter); // 資料總筆數_ 
                                                                       /* (新增 把$filter納入過濾條件, 才可以算出正確的total 
                                                                          避免下方的$subjects=all把$filter納入計算影響$orderStr . $page_rows) */
-                        $div=3; // 每個分頁有3筆資料_
+                        $div=10; // 每個分頁有3筆資料_
                         $pages=ceil($total/$div); // 擁有幾個分頁_使用進位避免餘數不被計算 值為(總筆數 除 每頁要設置的筆數)
                         $now=isset($_GET['p'])?$_GET['p']:1; // 當前頁_為GET值, 若無GET值顯示1
                         $start=($now-1)*$div; // 開始頁_(GET進來的值-1)*每分頁資料筆數
@@ -201,7 +201,6 @@ if(isset($_GET['filter'])){
                         echo "</a>";
                     }
                 ?>
-                </ul>
                 <!-- 分頁的頁碼 -->
                 <div class="text-center">
                     <?php
@@ -215,4 +214,6 @@ if(isset($_GET['filter'])){
                 }
                     ?>
                 </div>
-            </div>  
+                </ul>
+                
+            <!-- </div>   -->
