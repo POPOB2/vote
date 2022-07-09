@@ -166,6 +166,7 @@ if(isset($_GET['filter'])){
                                                         // 新增 . $page_rows 作為字串內容 影響SQL語句, 使用限制筆數產生分頁要顯示的資料 效果
 
                     foreach($subjects as $subject){// 使用foreach 將有資料內容的$subjects的資料 用陣列的方式 塞給$subject
+                        // echo "<a href='?do=vote_result&subject_id={$subject['id']}'>";// ++++++++++++++++++++++++++++++++++++++
                         echo "<a href='?do=vote_result&id={$subject['id']}'>";// 點擊投票內容 導到頁面 do=vote 而 id=$subject的id
                         echo "<li class='list-items'>";
                         // 投票主題------------------------------------------------------------------------------------------------------------------
