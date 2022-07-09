@@ -19,8 +19,18 @@
     <?php
     $sql="SELECT * FROM `users` WHERE acc='{$_SESSION['user']}'"; // 到資料庫撈資料
     $user=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC); // pdo->query獲取$sql查詢的資料->fetch(框號內容可打可不打  加這段可以只取欄位資料,不取索引資料  減少傳輸大小)
-    
+    //---------------------------------------------------------------------------------------------------------------------------------------------
+    $user=find('users',['acc'=>$_SESSION['user']]);
+    $user_subject=all('logs',['user_id'=>$user['id']]);
     ?>
+    <div>你已投票的項目,來去看結果</div>
+    <!-- 顯示出投票項目且可以直接導向該投票項目 -->
+    <?php
+    foreach($user_subject as $subject){
+        echo find('subjects',['id'=>$subject['subject_id']])['subject']."<br>";
+    }
+    ?>
+    <!-- ---------------------------------------------------------------------------------------------------------------------------------------- -->
     <a href="back.php">編輯與開設 投票項目</a><br>
     <a href="edit.php?id=<?=$user['id'];?>" method='POST'>編輯個人資訊</a><br>
     <a href="index.php">回到首頁</a><br>
