@@ -40,5 +40,28 @@ $opts=all("options",['subject_id'=>$_GET['id']]);// 用all將GET到的id值 用�
         }
         ?>
     </table>
-    <button class="btn btn-info" onclick="location.href='?do=vote&id=<?=$subject['id'];?>'">我要投票</button><!--  -->
+    <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
+    <?php
+    if(isset($_SESSION['user'])){//如果SESSION的user 存在 執行
+        // 如果空值==回傳找到的資料值為(logs資料表,user_id欄位 為 SESSION進來的user_id值)
+        if(null == (find('logs',['user_id'=>$_SESSION['user_id'],'subject_id'=>$_GET['id']]))){
+        // 如果確認為登入狀態, 且該帳號的logs資料表內的userid和subjectid為空值()代表他在這邊沒投過票所以顯示我要投票的按鈕
+        echo $_SESSION['user_id'];
+        echo "<br>";
+        echo $_GET['id'];
+    ?>    
+        <button class="btn btn-info" onclick="location.href='?do=vote&id=<?=$subject['id'];?>'">我要投票</button><!-- ///////////////////////// -->
+    <?php
+    }else{
+    ?>
+    <div>你已經投過票了</div>
+    <?php
+    }
+}else{
+    ?>
+    <button class="btn btn-info" onclick="location.href='do=login'">登入</button>
+    <?php
+}
+    ?>
+    <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 </div>
