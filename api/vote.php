@@ -5,6 +5,7 @@
 <?php
 include_once "base.php";
 
+
 // dd($_POST);
 
 // 並增加一個log  讓有登入沒登入有投票上的差異, 此時為設定的情況下user_id 為0 沒有值
@@ -14,7 +15,7 @@ include_once "base.php";
 
 /* 再input選擇 radio && checkbox 這兩種的情況下  只會傳已勾選的選項(值)  不會傳未勾選的選項(值) 過來
    利用 這個特性 可以知道 傳過來的 一定是有勾選的 */
-
+   
     
 
 // ***避免選多個選項 再主題的total加太多值, 所以需要將'選項'以foreach對total加值, 將'主題'以if對total加值, 拆開執行 如下:
@@ -37,11 +38,18 @@ if(is_array($_POST['opt'])){// 先判斷front/vote.php的opt是否為陣列
         }
         // 若是陣列(複選題) 則以下
         // isset變數是否存在(查詢SESSION帶進來的user 是否存在) true=$_SESSION的user值:flase=0; 將true或flase的值給$log
-        $log=['user_id'=>(isset($_SESSION['user']))?$_SESSION['user']:0, 
+        $log=['user_id'=>(isset($_SESSION['user_id']))?$_SESSION['user_id']:0, 
               'subject_id'=>$subject['id'],
               'option_id'=>$option['id']];
         save("logs",$log);
     }
+    /*
+    $log=['user_id'=>(isset($_SESSION['user_id']))?$_SESSION['user_id']:0,++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    'subject_id'=>$subject['id'],
+    'option_id'=>$option['id']
+    ];
+    save("logs",$log);*/
+    
 }else{      
         // 若不是陣列(單選題) 則以下
         // 將  用POST傳值給opt的內容查找options表裡的值  再將該筆資料給$option
@@ -51,7 +59,7 @@ if(is_array($_POST['opt'])){// 先判斷front/vote.php的opt是否為陣列
         $subject=find("subjects",$option['subject_id']);
         $subject['total']++;
         save("subjects",$subject);
-        $log=['user_id'=>(isset($_SESSION['user']))?$_SESSION['user']:0,
+        $log=['user_id'=>(isset($_SESSION['user_id']))?$_SESSION['user_id']:0,
              'subject_id'=>$subject['id'],
              'option_id'=>$option['id']];
         save("logs",$log);
