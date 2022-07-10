@@ -8,23 +8,25 @@ include_once "./api/base.php";
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>投票管理中心</title>
-    <!-- 前者本來賦予#header 300px設定 -->
     <link rel="stylesheet" href="./css/basic.css">
-    <link rel="stylesheet" href="./css/back.css"><!-- 後者賦予#header 100px 後者覆蓋掉前者的設定 -->
+    <link rel="stylesheet" href="./css/back.css">
 </head>
 <body>
     <!-- 後台 -->
     <div id="header">
-        <?php include "./layout/header.php";
-              include "./layout/back_nav.php";
-        ?>    
+        <?php include "./layout/header.php";?>    
     </div>
+    
+
     <!--  -form_data : 用表單傳出去的東西是form_data,其使用了GET或POST傳送的方式
           -query string : 查詢用的字串, 帶在網址?後面的參數內容就是query string, 
            1.query=以前針對使用條件再資料庫裡撈資料的行為稱做query
            2.string=代表在網址上傳值的資料型態 用這種方式傳值到後台時99%都是字串 後端拿到後針對這個內容做字串處理 如數字字串轉為數字 或用EX拆解內容等處理字串方式 -->
 
-    <div id="container">
+
+    <div class="main">
+        <div class="itm">
+            <div id="container">
     <?php
     if(isset($_GET['do'])){// 判斷網址有無GET到do參數, 若有do這段文字參數  執行以下
         $file="./back/".$_GET['do'].".php";// 變數=載入一個目錄,載入頁面和do名稱相同(來自./back資料夾 帶有GET到的do參數 且是.php檔)
@@ -35,7 +37,8 @@ include_once "./api/base.php";
         include $file;
     }else{//若無 則維持按下'新增投票'前的結果頁面 , 新增判斷是否存在的用意是 避免有人再do上面輸入了不存在的參數導致網頁錯誤, 結果上來說會回到沒有參數的頁面
     ?>        
-            <button class="btn btn-primary" onclick="location.href='?do=add_vote'">新增投票</button><!-- 路徑位置使用?do=鏈結區域  將當下頁面的內容帶到下一個鏈結區域 -->
+            <!-- <button class="btn btn-primary" onclick="location.href='?do=add_vote'">新增投票</button> -->
+            <!-- 路徑位置使用?do=鏈結區域  將當下頁面的內容帶到下一個鏈結區域 -->
             <div>
                 <ul>
                     <li class='list-header'>
@@ -53,7 +56,7 @@ include_once "./api/base.php";
                         echo "<li class='list-items'>";
 
                         // 投票主題------------------------------------------------------------------------------------------------------------------
-                        echo "<div>{$subject['subject']}</div>";// 將有資料內容的$subject用陣列的方式  echo出資料表內欄位 名為subject的資料內容
+                        echo "<div class='text-center1'>{$subject['subject']}</div>";// 將有資料內容的$subject用陣列的方式  echo出資料表內欄位 名為subject的資料內容
 
                         // 單/複選題-----------------------------------------------------------------------------------------------------------------
                         if($subject['multiple']==0){// 將現有值用於判斷是否==0,以顯示單/複選題
@@ -96,7 +99,17 @@ include_once "./api/base.php";
     <?php
     }
     ?>     
-    </div>
+    
+</div><!-- container尾巴 -->
+</div><!-- itm尾巴 -->
+    
+    
+    <aside><!-- 在main內, itm外 -->
+        <?php include "./layout/back_nav.php"; ?>
+    </aside>
+</div><!-- main尾巴 -->
+
+
 
 
     <div>
