@@ -15,13 +15,13 @@
 ul{
     margin: 1rem 0 1rem 6rem;
 }
+
 #header .slider{
     background-image:url(../upload/B.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 }
-
 
 
 .list-header{
@@ -41,6 +41,7 @@ ul{
 .text-center{
     color: rgb(32, 44, 42);
 }
+/* NAV選項 */
 .list-header div{
     width: calc(100% / 5);
     padding: 0.5rem 1rem;
@@ -57,7 +58,7 @@ ul{
     width: calc(100% / 5);
     padding: 0.5rem 1rem;
 }
-
+/* 個別投票內容 */
 .list-items{
     display: flex;
     justify-content: space-evenly;
@@ -71,14 +72,26 @@ ul{
     background-color: rgb(164, 207, 193);
     cursor: pointer;
 }
-
+/* 投票內頁-邊框 */
 .result-table{
     border-collapse: collapse;
     box-shadow: 0 0 6px #bbb;
+    
 }
+/* 投票內頁-文字內容 */
 .result-table td{
-    padding: 0.25re;
+    padding: 0.5rem;
     border: 1px solid #ccc;
+    color: rgb(32, 44, 42);
+}
+.quantity{
+    text-align: center;
+}
+.total{
+    /* border: 1px solid salmon ; */
+    color: rgb(32, 44, 42);
+    margin-bottom: 1vh;
+    font-size: 1.5rem;
 }
 #types{
     padding: 0.25rem 0.5rem;

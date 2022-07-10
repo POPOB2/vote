@@ -10,7 +10,7 @@ $opts=all("options",['subject_id'=>$_GET['id']]);// 用all將GET到的id值 用�
 ?>
 <h1 class="text-center"><?=$subject['subject'];?></h1>
 <div style="width:600px;margin:auto">
-    <div>總投票數:<?=$subject['total'];?></div>
+    <div class="total">總投票數 : <?=$subject['total'];?></div>
     <table class="result-table">
         <tr>
             <td>選項</td>
@@ -28,7 +28,7 @@ $opts=all("options",['subject_id'=>$_GET['id']]);// 用all將GET到的id值 用�
         <tr>
             <!-- 將$opt的陣列資料 取出 顯示再 對應欄位上(18~20行) -->
             <td><?=$opt['option'];?></td>
-            <td><?=$opt['total'];?></td>
+            <td class="quantity"><?=$opt['total'];?></td>
             <td>
                 <!-- 寬度使用上述$rate計算出來的百分比納入計算  隨著值越高 寬度越長 -->
                 <div style="display:inline-block; height:24px; background:skyblue; width:<?=300*$rate;?>px;"></div>
@@ -46,9 +46,6 @@ $opts=all("options",['subject_id'=>$_GET['id']]);// 用all將GET到的id值 用�
         // 如果空值==回傳找到的資料值為(logs資料表,user_id欄位 為 SESSION進來的user_id值)
         if(null == (find('logs',['user_id'=>$_SESSION['user_id'],'subject_id'=>$_GET['id']]))){
         // 如果確認為登入狀態, 且該帳號的logs資料表內的userid和subjectid為空值()代表他在這邊沒投過票所以顯示我要投票的按鈕
-        echo $_SESSION['user_id'];
-        echo "<br>";
-        echo $_GET['id'];
     ?>    
         <button class="btn btn-info" onclick="location.href='?do=vote&id=<?=$subject['id'];?>'">我要投票</button><!-- ///////////////////////// -->
     <?php
@@ -57,11 +54,11 @@ $opts=all("options",['subject_id'=>$_GET['id']]);// 用all將GET到的id值 用�
     <div>你已經投過票了</div>
     <?php
     }
-}else{
+    }else{
     ?>
-    <button class="btn btn-info" onclick="location.href='do=login'">登入</button>
+    <button class="btn btn-info" onclick="location.href='login.php'">登 入</button>
     <?php
-}
+    }
     ?>
     <!-- ------------------------------------------------------------------------------------------------------------------------------- -->
 </div>

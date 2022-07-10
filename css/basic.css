@@ -138,7 +138,13 @@ footer{
 
 
 .btn.btn-info{
-    background-color: rgb(29, 158, 197);
+    background-color: rgb(32, 178, 170, 0.7);
+    color: white;
+    font-size: 20px;
+    margin-top: 3vh;
+}
+.btn.btn-info:hover{
+    background-color: lightseagreen;
 }
 
 .text-center{
