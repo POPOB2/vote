@@ -15,9 +15,20 @@ $sql="UPDATE `users`
       WHERE `id`='{$_POST['id']}'";
 
 
+function alert($text){
+      echo "<script>alert('$text');window.history.back(-1)</script>";
+}
 
-$pdo->exec($sql); // $pdo 執行儲存內容($sql) // 把表單資料存進資料庫
 
-header("location:../member_center.php");
+if(!empty($pw&&$_POST['name']&&$_POST['birthday']&&$_POST['addr']&&$_POST['email']&&$_POST['passnote'])){
+      $pdo->exec($sql); // $pdo 執行儲存內容($sql) // 把表單資料存進資料庫
+      header("location:../member_center.php");
+}else{
+      $text2="編輯的個人資訊有誤,請更改後再送出";
+      alert($text2);
+}
+
+
+
 
 ?>
