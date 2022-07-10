@@ -11,7 +11,7 @@
 <body>
 <div class="main">
     <p class="top">註冊會員</p>
-    <form action="./api/register.php" method="post">
+    <form action="./api/register.php" method="post" iframe>
         <table>
             <tr>
                 <td><input type="text" name="acc" placeholder="帳號"></td>
