@@ -13,9 +13,21 @@ $sql=[
     'passnote'=>$_POST['passnote']
 ];
 
+function alert($text){
+    echo "<script>
+          alert('$text');window.history.back(-1);
+          </script>";
+    
+}
+if(!empty($_POST['acc']&&$_POST['pw']&&$_POST['name']&&$_POST['birthday']&&$_POST['addr']&&$_POST['email']&&$_POST['passnote'])){
+    save('users',$sql);
+    header("location:../login.php");
+}else{
+    $text1="資料填寫不完全,請重新填寫";
+    alert($text1);
+}
 
-save('users',$sql);
-header("location:../login.php");
+
 
 
 ?>
