@@ -4,9 +4,10 @@
 session_start(); // 會用到session 先宣告session_start()
 date_default_timezone_set('Asia/Taipei'); // 該程式使用的時區為何
 
-$dsn="mysql:host=localhost;charset=utf8;dbname=vote";
-$pdo=new PDO($dsn,'root','');
-
+    // $dsn="mysql:host=localhost;charset=utf8;dbname=s1110203";
+    // return new PDO($dsn,'s1110203','s1110203');
+    $dsn="mysql:host=localhost;charset=utf8;dbname=vote";
+    $pdo=new PDO($dsn,'root','');
 
 function pdo(){
     // $dsn="mysql:host=localhost;charset=utf8;dbname=s1110203";
@@ -26,6 +27,7 @@ function pdo(){
  *           3. 二個參數：
  *              a. 第一個參數必須為陣列，同2-a描述
  *              b. 第二個參數必須為字串，同2-b描述
+ *      ***範例:$opts=all("options",['subject_id'=>$_GET['subject_id']]);
  */
 
 function all($table,...$arg){// 自定函式all(條件1,複數條件...)
