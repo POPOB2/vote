@@ -86,7 +86,12 @@ include_once "./api/base.php";
                         echo "<div class='text-center'>{$subject['total']}</div>";
 
                         // 操作---------------------------------------------------------------------------------------------------------------------
-                        echo "<div class='text-center'>";
+                        echo "<div class='operate'>";
+                        if($subject['closure']==0){
+                            echo "<a class='closure' href='?do=closure&id={$subject['id']}'>開啟</a>";
+                        }else{
+                            echo "<a class='closure' href='?do=closure&id={$subject['id']}'>關閉</a>";
+                        }
                         echo "<a class='edit' href='?do=edit&id={$subject['id']}'>編輯</a>"; // 新增按鈕  同29行使用 判斷do=哪裡 且 id為資料庫的id值
                         echo "<a class='del' href='?do=del&id={$subject['id']}'>刪除</a>";
                         echo "</div>";

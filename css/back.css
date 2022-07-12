@@ -49,32 +49,30 @@ ul{
     background-color: rgb(164, 207, 193);
     cursor: pointer;
 }
-
+/* --------------------------------------------操作欄位-------------------------------------------- */
+/* 編輯按鈕 */
 .edit{
-    padding: 3px 12px;
+    padding: 10px 12px;
     border: 1px solid #ccc;
     display: inline-block;
     border-radius: 7px;
     background: lightseagreen;
     box-shadow: 3px 3px 10px rgb(29, 160, 154,0.5);
-    margin: 0 5px;
     color: rgb(42, 42, 42);
     text-decoration: none;
-    margin-left:25px ;
-    margin-bottom: 6px;
 }
 .edit:hover{
     background: rgb(149, 56, 19);
     color: white;
 }
+/* 刪除按鈕 */
 .del{
-    padding: 3px 12px;
+    padding: 10px 12px;
     border: 1px solid #ccc;
     display: inline-block;
     border-radius: 7px;
     background: rgb(111, 107, 107);
     box-shadow: 3px 3px 10px rgb(111, 107, 107, 0.5);;
-    margin: 0 5px;
     color: rgb(255, 255, 255);
     text-decoration: none;
     
@@ -83,7 +81,21 @@ ul{
     background: rgb(111, 107, 107,0.2);
     color: rgb(197, 0, 0);
 }
-
+/* 投票開關鈕 */
+.closure{
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    border-radius: 7px;
+    background: rgba(57, 204, 234, 0.5);
+    box-shadow: 3px 3px 10px rgba(48, 175, 200, 0.4);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+.closure:hover{
+    background: rgba(57, 104, 234, 0.5);
+    color: rgb(227, 158, 39);
+}
 
 .list-header{
     display: flex;
