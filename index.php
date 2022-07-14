@@ -17,7 +17,7 @@
         <?php include "./layout/header.php";?>
     </div>
 
-
+    <!-- 新增判斷1或0 決定是否顯示 -->
     
 
     <div class="main">
@@ -25,6 +25,12 @@
         <div id='container'>
             
             <?php
+
+// $subject=all('subjects');
+// foreach($subject as $value){
+//     echo $value['closure'];
+// }
+           
             if(isset($_GET['do'])){
                 $file='./front/'.$_GET['do'].".php";
             }
