@@ -1,5 +1,8 @@
 <?php
 include_once "./api/base.php";
+if(empty($_SESSION['user'])){
+    to('index.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
