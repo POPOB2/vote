@@ -130,17 +130,25 @@ if(isset($_GET['filter'])){
                                 $filter=['type_id'=>$_GET['filter']];
                             }
                         }
+                        
                         /* 建立分頁所需的變數群 
                          * 
                          * 
                          * 
                          *
                          * */ 
-                        //math(參數1.subjects表, 參數2.方法使用count, 參數3.使用參數2去執行的目標 count id欄位)     
+                        //math(參數1.subjects表, 參數2.方法使用count, 參數3.使用參數2去執行的目標 count id欄位)  
+                        
+                            
+                        // $filter2=[' closure=1'];
+                        // $filter2="select count(closure) form subjects where closure=1";
+                        // $filter2='closure=1';
+                        // $total2=math2('subjects','count','closure',$filter2);
                         $total=math('subjects','count','id',$filter); // 資料總筆數_ 
+                        
                                                                       /* (新增 把$filter納入過濾條件, 才可以算出正確的total 
                                                                          避免下方的$subjects=all把$filter納入計算影響$orderStr . $page_rows) */
-                        $div=10; // 每個分頁有3筆資料_
+                        $div=6; // 每個分頁有3筆資料_
                         $pages=ceil($total/$div); // 擁有幾個分頁_使用進位避免餘數不被計算 值為(總筆數 除 每頁要設置的筆數)
                         $now=isset($_GET['p'])?$_GET['p']:1; // 當前頁_為GET值, 若無GET值顯示1
                         $start=($now-1)*$div; // 開始頁_(GET進來的值-1)*每分頁資料筆數
@@ -164,7 +172,7 @@ if(isset($_GET['filter'])){
                 ----第三頁----                   
             */ 
                         
-
+                        // 
                     // allFunction=base.php->24行 , 給定資料表名稱和條件後，會回傳符合條件的所有資料
                     $subjects=all('subjects',$filter,$orderStr . $page_rows);// 若$orderStr無值  將subjects資料表的資料全部撈出  賦值給$subjects(SELECT * FROM subjects)
                                                         // 若$orderStr有值  將GET進來的內容 做為subjects表搜尋條件 賦值給$subjects(SELECT * FROM subjects ORDER BY `multiple` asc)
@@ -173,23 +181,29 @@ if(isset($_GET['filter'])){
                     foreach($subjects as $subject){// 使用foreach 將有資料內容的$subjects的資料 用陣列的方式 塞給$subject
                         // echo "<a href='?do=vote_result&subject_id={$subject['id']}'>";// ++++++++++++++++++++++++++++++++++++++
                         echo "<a href='?do=vote_result&id={$subject['id']}'>";// 點擊投票內容 導到頁面 do=vote 而 id=$subject的id
+                    if($subject['closure']==1){
                         echo "<li class='list-items'>";
+                    }
                         // 投票主題------------------------------------------------------------------------------------------------------------------
+                    if($subject['closure']==1){
                         echo "<div>{$subject['subject']}</div>";// 將有資料內容的$subject用陣列的方式  echo出資料表內欄位 名為subject的資料內容
-
+                    }
                         // 單/複選題-----------------------------------------------------------------------------------------------------------------
+                    if($subject['closure']==1){
                         if($subject['multiple']==0){// 將現有值用於判斷是否==0,以顯示單/複選題
                             echo "<div class='text-center'>單選題</div>";
                         }else{
                             echo "<div class='text-center'>複選題</div>";
                         }
-
+                    }
                         // 投票期間-----------------------------------------------------------------------------------------------------------------
+                    if($subject['closure']==1){
                         echo "<div class='text-center'>";
                         echo $subject['start']."~".$subject['end'];
                         echo "</div>";
-
+                    }
                         // 剩餘天數-----------------------------------------------------------------------------------------------------------------
+                        if($subject['closure']==1){
                         echo "<div class='text-center'>";
                             $today=strtotime("now");
                             $end=strtotime($subject['end']);
@@ -200,12 +214,15 @@ if(isset($_GET['filter'])){
                                 echo "<span style='color:grey'>該投票已結束</span>";
                             }
                         echo "</div>";
-
+                        }
                         // 投票人數-----------------------------------------------------------------------------------------------------------------
+                    if($subject['closure']==1){
                         echo "<div class='text-center'>{$subject['total']}</div>";
                         echo "</li>";
                         echo "</a>";
                     }
+                    }
+                
                 ?>
                 <!-- 分頁的頁碼 -->
                 <div class="text-center">
