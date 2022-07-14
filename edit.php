@@ -26,7 +26,7 @@
                 <td>帳號 <?=$user['acc'];?></td>
             </tr>
             <tr>
-                <!-- 設為不顯示以下密碼  再去判斷密碼是否為空 -->
+                
                 <!-- <td>密碼<input type="password" name="pw" value="< ?=$user['pw'];?>"></td> -->
                 <td>密碼<input type="password" name="pw" value="<?=$user['pw'];?>"></td>
             </tr>
