@@ -17,8 +17,10 @@
     
     <!-- 登入完成後,進入會員中心頁面 顯示出使用者資訊 讓使用者可以編輯資料 -->
     <?php
-    $sql="SELECT * FROM `users` WHERE acc='{$_SESSION['user']}'"; // 到資料庫撈資料
-    $user=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC); // pdo->query獲取$sql查詢的資料->fetch(框號內容可打可不打  加這段可以只取欄位資料,不取索引資料  減少傳輸大小)
+    // $sql="SELECT * FROM `users` WHERE `acc`='{$_SESSION['user']}'"; // 到資料庫撈資料
+    // $user=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC); // pdo->query獲取$sql查詢的資料->fetch(框號內容可打可不打  加這段可以只取欄位資料,不取索引資料  減少傳輸大小)
+    // print_r($sql) ;
+    $user=find('users',['acc'=>$_SESSION['user']]);
     ?>
     <a href="back.php">編輯與開設 投票項目</a><br>
     <a href="edit.php?id=<?=$user['id'];?>" method='POST'>編輯個人資訊</a><br>
