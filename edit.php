@@ -14,8 +14,9 @@
     <p>您的個人資訊設定</p>
     <?php
     // if(isset($_GET['id']))// 有這個值=透過會員中心頁面進入, 沒有值=非法登入(直接知道網頁名稱打網址進入 沒帶任何的id資料給予系統)
-    $sql="SELECT * FROM `users` WHERE id='{$_GET['id']}'"; // 進入編輯頁面後 id的資料會傳給使用者 再根據這個id的資料去資料庫把該id的整筆資料撈出來
-    $user=$pdo->query($sql)->fetch();// 撈出資料後再將撈出的資料 依據下方td的value內的值 依據填入  顯示於話面上的表單內
+    // $sql="SELECT * FROM `users` WHERE id='{$_GET['id']}'"; // 進入編輯頁面後 id的資料會傳給使用者 再根據這個id的資料去資料庫把該id的整筆資料撈出來
+    // $user=$pdo->query($sql)->fetch();// 撈出資料後再將撈出的資料 依據下方td的value內的值 依據填入  顯示於話面上的表單內
+    $user=find('users',['id'=>$_GET['id']]);
 
     ?>
     
@@ -25,6 +26,8 @@
                 <td>帳號 <?=$user['acc'];?></td>
             </tr>
             <tr>
+                <!-- 設為不顯示以下密碼  再去判斷密碼是否為空 -->
+                <!-- <td>密碼<input type="password" name="pw" value="< ?=$user['pw'];?>"></td> -->
                 <td>密碼<input type="password" name="pw" value="<?=$user['pw'];?>"></td>
             </tr>
             <tr>
