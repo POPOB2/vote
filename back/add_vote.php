@@ -1,7 +1,7 @@
 <form action="./api/add_vote.php" method="post">
     
     <div><!-- 新增分類管理選擇器------------------------------------------------------------------------- -->
-        <select name="types" id="types">
+        <select class ="choose" name="types" id="types">
             <?php
             $types=all("types");
             foreach($types as $type){
@@ -13,9 +13,11 @@
         </select>
     </div>
     <div>
-        <label for="subject">投票主題：</label> <!-- label的for可以使用id值做連接, 將下列的input用id連接後 兩者可以產生關聯 -->
-        <input type="text" name="subject" id="subject">
-        <input type="button" value="新增選項" onclick="more()"> <!-- '每點一下'就會新增, 所以使用onclick去add -->
+        <label class="theme" for="subject">投票主題：</label> <!-- label的for可以使用id值做連接, 將下列的input用id連接後 兩者可以產生關聯 -->
+        <input class="newEnter0"type="text" name="subject" id="subject">
+        <input class="new" type="submit" value="新增該投票主題">
+        <!-- '每點一下'就會新增, 所以使用onclick去add -->
+        <!-- <input class="new0"type="button" value="新增選項" onclick="more()">  -->
     </div>
     <div id="selector">
         <input type="radio" name="multiple" value="0" checked> <!-- checked=預設, 給value 0或1 使subjects資料表的multiple欄 可以辨別單複選的選擇 -->
@@ -39,15 +41,15 @@
                   $a=options[0(新增的第一個欄位),1(新增的第二個欄位),2(新增的第三個欄位)]
                   將只有一個options作為空陣列的基準 所以後續新增的欄位都以索引 填入該options陣列
              -->
-
-             <input class="new" type="submit" value="新增該投票項目">
+             <input class="new0"type="button" value="新增選項" onclick="more()"> 
+             <!-- <input class="new" type="submit" value="新增該投票項目"> -->
             </div>
         </div>
 
 </form>
 <script>
     function more(){
-        let opt=`<div><label>選項:</label><input type="text" name="option[]"></div>`;
+        let opt=`<div><label>選項:</label><input class="newEnter" type="text" name="option[]"></div>`;
         let opts=document.getElementById('options').innerHTML; // 變數opts=由id:options的內容賦值.使用innerHTML縮小查找與顯示該ID範圍
         opts=opts+opt; // 將opts再加上opt的內容(即click後的'新增選項'表單)
         document.getElementById('options').innerHTML=opts;
