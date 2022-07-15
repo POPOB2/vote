@@ -124,13 +124,12 @@
     |--|--|--|--|--|
     |id|int(11)|--|true|序號|
     |acc|varchar(12)|--|--|帳號|
-    |pw|varchar(16)|--|--|--|
+    |pw|varchar(128)|--|--|--|
     |name|varchar(12)|--|--|--|
     |birthday|date|--|--|--|
-    |gender|tinyint(1)|--|--|--|
     |addr|varchar(64)|--|--|--|
-    |education|varchar(32)|--|--|--|
-    |reg_date|date|--|--|--|
+    |email|varchar(36)|--|--|--|
+    |passnote|varchar(36)|--|--|--|
 * admin
     |名稱|型態|預設值|A_I|備註|
     |--|--|--|--|--|
@@ -138,6 +137,11 @@
     |acc|varchar(12)|--|--|帳號|
     |pw|varchar(16)|--|--|--|
     |name|varchar(12)|--|--|--|
+    |birthday|date|--|--|--|
+    |gender|tinyint(1)|--|--|--|
+    |addr|varcgar(64)|--|--|--|
+    |education|varcgar(32)|--|--|--|
+    |reg_date|date|--|--|--|
 * subjects <!-- 該題目多少人來投票 -->
     |名稱|型態|預設值|A_I|備註|
     |--|--|--|--|--|
@@ -146,24 +150,25 @@
     |subject_id|int(11)|--|--|--|
     |multiple|boolean(1)|0|--|單/複選的選擇|<!-- 用於選擇單複選,1=複選,0=單選 -->
     |mulit_limit|tinyint(2)|1|--|單/複選項目數|<!-- 2位數可以複選到99項 -->
-    |start|date|--|--|--|
-    |end|date|--|--|--|
-    |total|int(11)|--|--|--|
+    |start|date|--|--|開始時間|
+    |end|date|--|--|結束時間|
+    |total|int(11)|--|--|總投票人數|
+    |closure|boolean(1)|1|--|開關投票的選擇|
 * options <!-- 每一個選項被投了幾次 -->
     |名稱|型態|預設值|A_I|備註|
     |--|--|--|--|--|
     |id|int(11)|--|true|序號|
     |option|varchar(128)|--|--|選項描述|
     |subject_id|int(11)|--|--|--|
-    |total|int(11)|--|--|--|
-* log <!-- 紀錄誰對哪個選項與題目做投票動作,並對此做出細部分析 -->
+    |total|int(11)|--|--|選項投票數|
+* logs <!-- 紀錄誰對哪個選項與題目做投票動作,並對此做出細部分析 -->
     |名稱|型態|預設值|A_I|備註|
     |--|--|--|--|--|
     |id|int(11)|--|true|序號|
     |user_id|int(11)|--|--|投票者|<!-- 誰 -->
     |subject_id|int(11)|--|--|--|<!-- 投哪一個題目 -->
-    |option|varchar(11)|--|--|--|<!-- 投的題目所選的選項為何 -->
-    |vote_time|timestamp|--|--|--|<!-- 因為投票時間長使用timestamp,需準確到秒數 -->
+    |option_id|varchar(11)|--|--|--|<!-- 投的題目所選的選項為何 -->
+    |vote_time|timestamp|--|--|投票時間|<!-- 因為投票時間長使用timestamp,需準確到秒數 -->
 * type <!-- 通常用於當作關鍵字分類 -->
     |名稱|型態|預設值|A_I|備註|
     |--|--|--|--|--|
