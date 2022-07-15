@@ -142,14 +142,16 @@ if(isset($_GET['filter'])){
                             
                         // $filter2=[' closure=1'];
                         // $filter2="select count(closure) form subjects where closure=1";
-                        // $filter2='closure=1';
-                        // $total2=math2('subjects','count','closure',$filter2);
+                        $filterall=all('subjects',['closure'=>1]);
+                        
+                        
+                        $total2=count($filterall);
                         $total=math('subjects','count','id',$filter); // 資料總筆數_ 
                         
                                                                       /* (新增 把$filter納入過濾條件, 才可以算出正確的total 
                                                                          避免下方的$subjects=all把$filter納入計算影響$orderStr . $page_rows) */
                         $div=6; // 每個分頁有3筆資料_
-                        $pages=ceil($total/$div); // 擁有幾個分頁_使用進位避免餘數不被計算 值為(總筆數 除 每頁要設置的筆數)
+                        $pages=ceil($total2/$div); // 擁有幾個分頁_使用進位避免餘數不被計算 值為(總筆數 除 每頁要設置的筆數)
                         $now=isset($_GET['p'])?$_GET['p']:1; // 當前頁_為GET值, 若無GET值顯示1
                         $start=($now-1)*$div; // 開始頁_(GET進來的值-1)*每分頁資料筆數
                         $page_rows=" limit $start,$div"; // 每頁顯示的資料_限制筆數 為開始頁的 每個分頁筆數
